@@ -41,8 +41,8 @@ ul.links a{display:block;padding:14px 16px;border:1px solid var(--line);border-r
 </header>
 <section class="lang" id="en" lang="en" aria-label="English">
 <h2>Privacy Policy</h2>
-<p class="updated">Effective 22 October 2026</p>
-<p>In short: Finland Life has no account and no login, and no Finland Life server receives your data. What you do in the app stays on your device. When the app uses the internet, it asks public data services (weather, trains, news and so on) directly from your device. We do not use analytics, crash-reporting or advertising tools, we do not track you, and we do not sell data.</p>
+<p class="updated">Effective 23 October 2026</p>
+<p>In short: Finland Life has no account and no login, and no Finland Life server stores your data. What you do in the app stays on your device. When the app uses the internet, it asks public data services (weather, trains, news and so on) from your device — directly, or for routes through a small Finland Life relay that only adds our access key and keeps nothing. We do not use analytics, crash-reporting or advertising tools, we do not track you, and we do not sell data.</p>
 <h3>1. Who we are</h3>
 <p>Finland Life is published by Rafael Melo. Privacy contact: <a href="mailto:rmappflow@gmail.com">rmappflow@gmail.com</a>.</p>
 <h3>2. What stays only on your device</h3>
@@ -54,11 +54,11 @@ ul.links a{display:block;padding:14px 16px;border:1px solid var(--line);border-r
 <li>The offline trip copy you download (weather and aurora forecasts for one place; at most 2 MB, deleted automatically after the trip).</li>
 <li>Temporary copies of downloaded public data (forecasts, timetables, news, photos), kept in the device's cache.</li>
 </ul>
-<p>Sync with iCloud is currently switched off: your data is not copied to iCloud by the app. The device's own iCloud or computer backup may include the app's files, under Apple's rules.</p>
+<p>Sync with iCloud is currently switched off: your data is not copied to iCloud by the app. The device's own iCloud or computer backup may include the app's files, under Apple's rules (the offline trip copy is left out of backups).</p>
 <h3>3. Location</h3>
 <ul>
 <li>The app asks for location only "while using the app". It never tracks you in the background.</li>
-<li>It is used to show local weather, aurora conditions, the nearest train station, road camera and tide gauge, and to plan trips by public transport.</li>
+<li>It is used to show local weather, aurora conditions, the nearest train station, road camera and tide gauge, and to plan trips by public transport. On the Map tab it is used only after you tap "Near me".</li>
 <li>For the "Aurora overhead now" alert (if you switch it on), iOS may wake the app in the background now and then. The app then uses the last location iOS already has, without asking for a new one, and works out the nearest magnetometer station on the device. Your location is not sent anywhere in that check.</li>
 <li>When a service needs a place (weather forecast, route planner), the app sends the coordinates of your location or of the place you chose. See section 6.</li>
 <li>You can deny or withdraw the permission in iPhone Settings; the app keeps working with the city you choose.</li>
@@ -74,23 +74,23 @@ ul.links a{display:block;padding:14px 16px;border:1px solid var(--line);border-r
 <h3>6. Services the app contacts</h3>
 <p>Like any website, these services receive your IP address and technical connection data. The app does not send them your name, email or any device or advertising identifier.</p>
 <div class="table-wrap"><table><thead><tr><th>Service</th><th>Purpose</th><th>What it receives besides the IP</th></tr></thead><tbody>
-<tr><td>Finnish Meteorological Institute (FMI) open data</td><td>weather forecast, observations, tide gauges, aurora activity (magnetometers)</td><td>for forecasts, the coordinates of your location or chosen place; otherwise nothing</td></tr>
-<tr><td>Fintraffic Digitraffic</td><td>live trains and stations, road weather, road cameras</td><td>the stations you look up; the app identifies itself as "FinlandLife/iOS"</td></tr>
-<tr><td>Digitransit (HSL, Fintraffic, Waltti)</td><td>city transit routes, stops and address search</td><td>start and destination of a route (coordinates or text you type)</td></tr>
-<tr><td>Finavia</td><td>airport departures and arrivals</td><td>nothing</td></tr>
-<tr><td>City of Helsinki (Linked Events)</td><td>events</td><td>nothing</td></tr>
+<tr><td>Finnish Meteorological Institute (FMI) open data</td><td>weather forecast, observations, tide gauges, aurora activity (magnetometers), the rain and snow radar on the map (with that layer on)</td><td>for forecasts, the coordinates of your location or chosen place; for the radar, the map tiles on screen; otherwise nothing</td></tr>
+<tr><td>HSL (Helsinki Region Transport), live vehicle positions</td><td>buses, trams, metro and ferries moving on the map (only with Live transit on, zoomed in around Helsinki)</td><td>the map area on screen (as 0.1° squares) and your IP address; nothing about you</td></tr>
+<tr><td>Fintraffic Digitraffic</td><td>live trains and stations, train positions on the map (only with that layer on), road weather, road cameras</td><td>the stations you look up (train positions: nothing about you); the app identifies itself as "FinlandLife/iOS" or "FinlandLife/" plus the app version</td></tr>
+<tr><td>Finland Life relay (Cloudflare Workers)</td><td>passes route and address-search requests to Digitransit, adding our access key</td><td>the same as Digitransit below; we keep no logs or copies (Cloudflare handles the connection under its own policy)</td></tr>
+<tr><td>Digitransit (HSL, Fintraffic, Waltti), via the relay</td><td>city transit routes, stops and address search</td><td>start and destination of a route (coordinates or text you type); it sees the relay, not your IP address</td></tr>
+<tr><td>City of Helsinki (Linked Events)</td><td>events; each event photo loads from the address its organiser published</td><td>nothing</td></tr>
 <tr><td>NOAA Space Weather Prediction Center</td><td>aurora forecast</td><td>nothing</td></tr>
-<tr><td>Yle</td><td>news feeds</td><td>nothing</td></tr>
 <tr><td>Wikimedia Commons</td><td>photos of places</td><td>nothing</td></tr>
-<tr><td>Cloudflare (finlandlife-content.pages.dev)</td><td>the app's editorial content and images</td><td>nothing</td></tr>
-<tr><td>YouTube (Google), youtube-nocookie.com</td><td>live cameras, only when you open one</td><td>what an embedded YouTube player receives; <a href="https://policies.google.com/privacy">Google Privacy Policy</a></td></tr>
-<tr><td>Apple (App Store)</td><td>purchases and subscription status</td><td>handled by Apple under its own policy</td></tr>
+<tr><td>Cloudflare (finlandlife-content.pages.dev)</td><td>Finland Life's own articles, news summaries and images, when published</td><td>nothing</td></tr>
+<tr><td>YouTube (Google), youtube.com and youtube-nocookie.com</td><td>live cameras. Opening the list asks YouTube whether each stream is online. The player loads only after you tap a camera, never plays by itself, and keeps no cookies or website data after it closes.</td><td>what an embedded YouTube player receives; the app identifies itself with its App Store ID; <a href="https://policies.google.com/privacy">Google Privacy Policy</a></td></tr>
+<tr><td>Apple</td><td>purchases and subscription status (App Store); speech recognition in speaking exercises when it can't run on the iPhone (section 4); place names for your location; maps; the Map's search (what you type) and, with Stays on, hotels in the area on screen</td><td>handled by Apple under its own policy</td></tr>
 </tbody></table></div>
 <p>Each service keeps its own logs under its own policy. Most of this data is published under open licences such as CC BY 4.0; credits are shown in the app.</p>
 <h3>7. Purchases (Sisu)</h3>
 <p>Sisu subscriptions and 7-day passes are sold and processed by Apple through the App Store. The app never sees or stores payment details; it only asks the App Store which purchases are active on your Apple Account. Cancellation and refunds follow Apple's rules.</p>
 <h3>8. External links</h3>
-<p>The app opens sites outside it: news articles, official services (for example Migri, DVV, Kela, Vero, suomi.fi), airline sites and Google Flights, maps, Instagram (@thefinlandlife) and these legal pages. Their own privacy policies and terms apply there.</p>
+<p>The app opens sites outside it: news articles, official services (for example Migri, DVV, Kela, Vero, suomi.fi), airline sites and Google Flights, home listing sites (Oikotie, Etuovi), maps, Instagram (@thefinlandlife) and these legal pages. Their own privacy policies and terms apply there.</p>
 <h3>9. Export and delete your data</h3>
 <p>In Settings › Your data you can export a file with everything the app keeps, and delete it all with "Delete local data" (see the <a href="../delete-data/">Delete your data</a> page). Uninstalling the app also removes it. There is nothing to delete on our side, because we hold no copy.</p>
 <h3>10. Children</h3>
@@ -104,8 +104,8 @@ ul.links a{display:block;padding:14px 16px;border:1px solid var(--line);border-r
 </section>
 <section class="lang" id="pt" lang="pt" aria-label="Português">
 <h2>Política de Privacidade</h2>
-<p class="updated">Em vigor desde 22 de outubro de 2026</p>
-<p>Em resumo: o Finland Life não tem conta nem login, e nenhum servidor do Finland Life recebe seus dados. O que você faz no app fica no seu aparelho. Quando o app usa a internet, ele consulta serviços de dados públicos (tempo, trens, notícias etc.) diretamente do seu aparelho. Não usamos ferramentas de análise, de relatório de falhas nem de publicidade, não rastreamos você e não vendemos dados.</p>
+<p class="updated">Em vigor desde 23 de outubro de 2026</p>
+<p>Em resumo: o Finland Life não tem conta nem login, e nenhum servidor do Finland Life guarda seus dados. O que você faz no app fica no seu aparelho. Quando o app usa a internet, ele consulta serviços de dados públicos (tempo, trens, notícias etc.) a partir do seu aparelho — diretamente ou, para rotas, por um pequeno intermediário do Finland Life que só acrescenta nossa chave de acesso e não guarda nada. Não usamos ferramentas de análise, de relatório de falhas nem de publicidade, não rastreamos você e não vendemos dados.</p>
 <h3>1. Quem somos</h3>
 <p>O Finland Life é publicado por Rafael Melo. Contato sobre privacidade: <a href="mailto:rmappflow@gmail.com">rmappflow@gmail.com</a>.</p>
 <h3>2. O que fica só no seu aparelho</h3>
@@ -117,11 +117,11 @@ ul.links a{display:block;padding:14px 16px;border:1px solid var(--line);border-r
 <li>A cópia offline da viagem que você baixar (previsões de tempo e de aurora de um lugar; no máximo 2 MB, apagada sozinha depois da viagem).</li>
 <li>Cópias temporárias de dados públicos baixados (previsões, horários, notícias, fotos), guardadas no cache do aparelho.</li>
 </ul>
-<p>A sincronização com o iCloud está desligada no momento: o app não copia seus dados para o iCloud. O backup do próprio aparelho (iCloud ou computador) pode incluir os arquivos do app, conforme as regras da Apple.</p>
+<p>A sincronização com o iCloud está desligada no momento: o app não copia seus dados para o iCloud. O backup do próprio aparelho (iCloud ou computador) pode incluir os arquivos do app, conforme as regras da Apple (a cópia offline da viagem fica fora do backup).</p>
 <h3>3. Localização</h3>
 <ul>
 <li>O app pede a localização só "durante o uso do app". Ele nunca rastreia você em segundo plano.</li>
-<li>Ela serve para mostrar o tempo local, as condições de aurora, a estação de trem, a câmera de estrada e o marégrafo mais próximos, e para planejar trajetos de transporte público.</li>
+<li>Ela serve para mostrar o tempo local, as condições de aurora, a estação de trem, a câmera de estrada e o marégrafo mais próximos, e para planejar trajetos de transporte público. Na aba Mapa, só é usada depois que você toca em "Perto de mim".</li>
 <li>No alerta "Aurora acima de você agora" (se você ligar), o iOS pode acordar o app de vez em quando. O app então usa a última localização que o iOS já tem, sem pedir uma nova, e calcula no aparelho a estação de magnetômetro mais próxima. Sua localização não é enviada a lugar nenhum nessa checagem.</li>
 <li>Quando um serviço precisa de um lugar (previsão do tempo, planejador de rotas), o app envia as coordenadas da sua localização ou do lugar que você escolheu. Veja a seção 6.</li>
 <li>Você pode negar ou retirar a permissão nos Ajustes do iPhone; o app continua funcionando com a cidade que você escolher.</li>
@@ -137,23 +137,23 @@ ul.links a{display:block;padding:14px 16px;border:1px solid var(--line);border-r
 <h3>6. Serviços que o app consulta</h3>
 <p>Como qualquer site, estes serviços recebem o endereço IP e dados técnicos da conexão. O app não envia a eles seu nome, e-mail nem identificador do aparelho ou de publicidade.</p>
 <div class="table-wrap"><table><thead><tr><th>Serviço</th><th>Para quê</th><th>O que recebe além do IP</th></tr></thead><tbody>
-<tr><td>Instituto Meteorológico da Finlândia (FMI), dados abertos</td><td>previsão do tempo, observações, marégrafos, atividade da aurora (magnetômetros)</td><td>nas previsões, as coordenadas da sua localização ou do lugar escolhido; fora isso, nada</td></tr>
-<tr><td>Fintraffic Digitraffic</td><td>trens e estações ao vivo, tempo nas estradas, câmeras de estrada</td><td>as estações consultadas; o app se identifica como "FinlandLife/iOS"</td></tr>
-<tr><td>Digitransit (HSL, Fintraffic, Waltti)</td><td>rotas de transporte urbano, paradas e busca de endereços</td><td>origem e destino da rota (coordenadas ou o texto digitado)</td></tr>
-<tr><td>Finavia</td><td>partidas e chegadas nos aeroportos</td><td>nada</td></tr>
-<tr><td>Cidade de Helsinque (Linked Events)</td><td>eventos</td><td>nada</td></tr>
+<tr><td>Instituto Meteorológico da Finlândia (FMI), dados abertos</td><td>previsão do tempo, observações, marégrafos, atividade da aurora (magnetômetros), o radar de chuva e neve no mapa (com essa camada ligada)</td><td>nas previsões, as coordenadas da sua localização ou do lugar escolhido; no radar, os blocos do mapa na tela; fora isso, nada</td></tr>
+<tr><td>HSL (transporte da região de Helsinque), posição dos veículos ao vivo</td><td>ônibus, bondes, metrô e balsas andando no mapa (só com Transporte ao vivo ligado e zoom de cidade em Helsinque)</td><td>a área do mapa na tela (em quadrados de 0,1°) e o seu IP; nada sobre você</td></tr>
+<tr><td>Fintraffic Digitraffic</td><td>trens e estações ao vivo, posição dos trens no mapa (só com essa camada ligada), tempo nas estradas, câmeras de estrada</td><td>as estações consultadas (posição dos trens: nada sobre você); o app se identifica como "FinlandLife/iOS" ou "FinlandLife/" mais a versão do app</td></tr>
+<tr><td>Intermediário do Finland Life (Cloudflare Workers)</td><td>repassa à Digitransit os pedidos de rota e de busca de endereço, acrescentando nossa chave de acesso</td><td>o mesmo que Digitransit abaixo; não guardamos registros nem cópias (a Cloudflare trata a conexão conforme a política dela)</td></tr>
+<tr><td>Digitransit (HSL, Fintraffic, Waltti), pelo intermediário</td><td>rotas de transporte urbano, paradas e busca de endereços</td><td>origem e destino da rota (coordenadas ou o texto digitado); ela vê o intermediário, não o seu IP</td></tr>
+<tr><td>Cidade de Helsinque (Linked Events)</td><td>eventos; a foto de cada evento vem do endereço publicado pelo organizador</td><td>nada</td></tr>
 <tr><td>NOAA Space Weather Prediction Center</td><td>previsão de aurora</td><td>nada</td></tr>
-<tr><td>Yle</td><td>feeds de notícias</td><td>nada</td></tr>
 <tr><td>Wikimedia Commons</td><td>fotos dos lugares</td><td>nada</td></tr>
-<tr><td>Cloudflare (finlandlife-content.pages.dev)</td><td>conteúdo editorial e imagens do app</td><td>nada</td></tr>
-<tr><td>YouTube (Google), youtube-nocookie.com</td><td>câmeras ao vivo, só quando você abre uma</td><td>o que um player incorporado do YouTube recebe; <a href="https://policies.google.com/privacy">Política de Privacidade do Google</a></td></tr>
-<tr><td>Apple (App Store)</td><td>compras e situação da assinatura</td><td>tratado pela Apple, conforme a política dela</td></tr>
+<tr><td>Cloudflare (finlandlife-content.pages.dev)</td><td>artigos, resumos de notícias e imagens do próprio Finland Life, quando publicados</td><td>nada</td></tr>
+<tr><td>YouTube (Google), youtube.com e youtube-nocookie.com</td><td>câmeras ao vivo. Abrir a lista pergunta ao YouTube se cada transmissão está no ar. O player só carrega depois que você toca numa câmera, nunca começa a tocar sozinho e não guarda cookies nem dados de site depois de fechado.</td><td>o que um player incorporado do YouTube recebe; o app se identifica com o ID dele na App Store; <a href="https://policies.google.com/privacy">Política de Privacidade do Google</a></td></tr>
+<tr><td>Apple</td><td>compras e situação da assinatura (App Store); reconhecimento de fala nos exercícios, quando não dá para fazer no iPhone (seção 4); nome do lugar da sua localização; mapas; a busca do Mapa (o que você digita) e, com Hospedagem ligada, os hotéis da área na tela</td><td>tratado pela Apple, conforme a política dela</td></tr>
 </tbody></table></div>
 <p>Cada serviço guarda os próprios registros conforme a própria política. A maior parte desses dados é publicada sob licenças abertas como a CC BY 4.0; os créditos aparecem no app.</p>
 <h3>7. Compras (Sisu)</h3>
 <p>As assinaturas Sisu e os passes de 7 dias são vendidos e processados pela Apple na App Store. O app nunca vê nem guarda dados de pagamento; ele só pergunta à App Store quais compras estão ativas na sua Conta Apple. Cancelamento e reembolso seguem as regras da Apple.</p>
 <h3>8. Links externos</h3>
-<p>O app abre sites fora dele: notícias, serviços oficiais (por exemplo Migri, DVV, Kela, Vero, suomi.fi), sites de companhias aéreas e o Google Voos, mapas, o Instagram (@thefinlandlife) e estas páginas legais. Lá valem as políticas e os termos de cada site.</p>
+<p>O app abre sites fora dele: notícias, serviços oficiais (por exemplo Migri, DVV, Kela, Vero, suomi.fi), sites de companhias aéreas e o Google Voos, sites de anúncios de imóveis (Oikotie, Etuovi), mapas, o Instagram (@thefinlandlife) e estas páginas legais. Lá valem as políticas e os termos de cada site.</p>
 <h3>9. Exportar e apagar seus dados</h3>
 <p>Em Ajustes › Seus dados você pode exportar um arquivo com tudo o que o app guarda e apagar tudo em "Apagar dados locais" (veja a página <a href="../delete-data/">Apagar seus dados</a>). Desinstalar o app também apaga. Do nosso lado não há nada para apagar, porque não temos cópia.</p>
 <h3>10. Crianças</h3>
@@ -167,8 +167,8 @@ ul.links a{display:block;padding:14px 16px;border:1px solid var(--line);border-r
 </section>
 <section class="lang" id="es" lang="es" aria-label="Español">
 <h2>Política de Privacidad</h2>
-<p class="updated">Vigente desde el 22 de octubre de 2026</p>
-<p>En resumen: Finland Life no tiene cuenta ni inicio de sesión, y ningún servidor de Finland Life recibe tus datos. Lo que haces en la app se queda en tu dispositivo. Cuando la app usa internet, consulta servicios de datos públicos (tiempo, trenes, noticias, etc.) directamente desde tu dispositivo. No usamos herramientas de análisis, de informes de fallos ni de publicidad, no te rastreamos y no vendemos datos.</p>
+<p class="updated">Vigente desde el 23 de octubre de 2026</p>
+<p>En resumen: Finland Life no tiene cuenta ni inicio de sesión, y ningún servidor de Finland Life guarda tus datos. Lo que haces en la app se queda en tu dispositivo. Cuando la app usa internet, consulta servicios de datos públicos (tiempo, trenes, noticias, etc.) desde tu dispositivo: directamente o, para rutas, a través de un pequeño intermediario de Finland Life que solo añade nuestra clave de acceso y no guarda nada. No usamos herramientas de análisis, de informes de fallos ni de publicidad, no te rastreamos y no vendemos datos.</p>
 <h3>1. Quiénes somos</h3>
 <p>Finland Life es publicada por Rafael Melo. Contacto sobre privacidad: <a href="mailto:rmappflow@gmail.com">rmappflow@gmail.com</a>.</p>
 <h3>2. Lo que se queda solo en tu dispositivo</h3>
@@ -180,11 +180,11 @@ ul.links a{display:block;padding:14px 16px;border:1px solid var(--line);border-r
 <li>La copia sin conexión del viaje que descargues (previsiones del tiempo y de aurora de un lugar; máximo 2 MB, se borra sola después del viaje).</li>
 <li>Copias temporales de datos públicos descargados (previsiones, horarios, noticias, fotos), guardadas en la caché del dispositivo.</li>
 </ul>
-<p>La sincronización con iCloud está desactivada por ahora: la app no copia tus datos a iCloud. La copia de seguridad del propio dispositivo (iCloud u ordenador) puede incluir los archivos de la app, según las reglas de Apple.</p>
+<p>La sincronización con iCloud está desactivada por ahora: la app no copia tus datos a iCloud. La copia de seguridad del propio dispositivo (iCloud u ordenador) puede incluir los archivos de la app, según las reglas de Apple (la copia sin conexión del viaje queda fuera de la copia de seguridad).</p>
 <h3>3. Ubicación</h3>
 <ul>
 <li>La app pide la ubicación solo "mientras se usa la app". Nunca te rastrea en segundo plano.</li>
-<li>Sirve para mostrar el tiempo local, las condiciones de aurora, la estación de tren, la cámara de carretera y el mareógrafo más cercanos, y para planificar trayectos en transporte público.</li>
+<li>Sirve para mostrar el tiempo local, las condiciones de aurora, la estación de tren, la cámara de carretera y el mareógrafo más cercanos, y para planificar trayectos en transporte público. En la pestaña Mapa, solo se usa después de tocar "Cerca de mí".</li>
 <li>Para la alerta "Aurora sobre ti ahora" (si la activas), iOS puede despertar la app de vez en cuando. La app usa entonces la última ubicación que iOS ya tiene, sin pedir una nueva, y calcula en el dispositivo la estación de magnetómetro más cercana. En esa comprobación tu ubicación no se envía a ningún sitio.</li>
 <li>Cuando un servicio necesita un lugar (previsión del tiempo, planificador de rutas), la app envía las coordenadas de tu ubicación o del lugar que elegiste. Ver la sección 6.</li>
 <li>Puedes denegar o retirar el permiso en Ajustes del iPhone; la app sigue funcionando con la ciudad que elijas.</li>
@@ -200,23 +200,23 @@ ul.links a{display:block;padding:14px 16px;border:1px solid var(--line);border-r
 <h3>6. Servicios que consulta la app</h3>
 <p>Como cualquier sitio web, estos servicios reciben tu dirección IP y datos técnicos de la conexión. La app no les envía tu nombre, correo ni ningún identificador del dispositivo o de publicidad.</p>
 <div class="table-wrap"><table><thead><tr><th>Servicio</th><th>Para qué</th><th>Qué recibe además de la IP</th></tr></thead><tbody>
-<tr><td>Instituto Meteorológico de Finlandia (FMI), datos abiertos</td><td>previsión del tiempo, observaciones, mareógrafos, actividad de aurora (magnetómetros)</td><td>en las previsiones, las coordenadas de tu ubicación o del lugar elegido; si no, nada</td></tr>
-<tr><td>Fintraffic Digitraffic</td><td>trenes y estaciones en directo, tiempo en carretera, cámaras de carretera</td><td>las estaciones consultadas; la app se identifica como "FinlandLife/iOS"</td></tr>
-<tr><td>Digitransit (HSL, Fintraffic, Waltti)</td><td>rutas de transporte urbano, paradas y búsqueda de direcciones</td><td>origen y destino de la ruta (coordenadas o el texto que escribas)</td></tr>
-<tr><td>Finavia</td><td>salidas y llegadas de los aeropuertos</td><td>nada</td></tr>
-<tr><td>Ciudad de Helsinki (Linked Events)</td><td>eventos</td><td>nada</td></tr>
+<tr><td>Instituto Meteorológico de Finlandia (FMI), datos abiertos</td><td>previsión del tiempo, observaciones, mareógrafos, actividad de aurora (magnetómetros), el radar de lluvia y nieve en el mapa (con esa capa activada)</td><td>en las previsiones, las coordenadas de tu ubicación o del lugar elegido; en el radar, los mosaicos del mapa en pantalla; si no, nada</td></tr>
+<tr><td>HSL (transporte de la región de Helsinki), posición de los vehículos en directo</td><td>autobuses, tranvías, metro y ferris moviéndose en el mapa (solo con Transporte en directo activado y zoom de ciudad en Helsinki)</td><td>la zona del mapa en pantalla (en cuadrados de 0,1°) y tu IP; nada sobre ti</td></tr>
+<tr><td>Fintraffic Digitraffic</td><td>trenes y estaciones en directo, posición de los trenes en el mapa (solo con esa capa activada), tiempo en carretera, cámaras de carretera</td><td>las estaciones consultadas (posición de los trenes: nada sobre ti); la app se identifica como "FinlandLife/iOS" o "FinlandLife/" más la versión de la app</td></tr>
+<tr><td>Intermediario de Finland Life (Cloudflare Workers)</td><td>pasa a Digitransit las solicitudes de rutas y búsqueda de direcciones, añadiendo nuestra clave de acceso</td><td>lo mismo que Digitransit abajo; no guardamos registros ni copias (Cloudflare trata la conexión según su política)</td></tr>
+<tr><td>Digitransit (HSL, Fintraffic, Waltti), a través del intermediario</td><td>rutas de transporte urbano, paradas y búsqueda de direcciones</td><td>origen y destino de la ruta (coordenadas o el texto que escribas); ve el intermediario, no tu IP</td></tr>
+<tr><td>Ciudad de Helsinki (Linked Events)</td><td>eventos; la foto de cada evento se carga desde la dirección que publicó el organizador</td><td>nada</td></tr>
 <tr><td>NOAA Space Weather Prediction Center</td><td>previsión de auroras</td><td>nada</td></tr>
-<tr><td>Yle</td><td>noticias</td><td>nada</td></tr>
 <tr><td>Wikimedia Commons</td><td>fotos de lugares</td><td>nada</td></tr>
-<tr><td>Cloudflare (finlandlife-content.pages.dev)</td><td>contenido editorial e imágenes de la app</td><td>nada</td></tr>
-<tr><td>YouTube (Google), youtube-nocookie.com</td><td>cámaras en directo, solo cuando abres una</td><td>lo que recibe un reproductor de YouTube integrado; <a href="https://policies.google.com/privacy">Política de Privacidad de Google</a></td></tr>
-<tr><td>Apple (App Store)</td><td>compras y estado de la suscripción</td><td>gestionado por Apple según su política</td></tr>
+<tr><td>Cloudflare (finlandlife-content.pages.dev)</td><td>artículos, resúmenes de noticias e imágenes propios de Finland Life, cuando se publican</td><td>nada</td></tr>
+<tr><td>YouTube (Google), youtube.com y youtube-nocookie.com</td><td>cámaras en directo. Abrir la lista pregunta a YouTube si cada transmisión está activa. El reproductor solo se carga después de tocar una cámara, nunca se reproduce solo y no guarda cookies ni datos de sitios al cerrarse.</td><td>lo que recibe un reproductor de YouTube integrado; la app se identifica con su ID de App Store; <a href="https://policies.google.com/privacy">Política de Privacidad de Google</a></td></tr>
+<tr><td>Apple</td><td>compras y estado de la suscripción (App Store); reconocimiento de voz en los ejercicios cuando no puede hacerse en el iPhone (sección 4); nombre del lugar de tu ubicación; mapas; la búsqueda del Mapa (lo que escribes) y, con Alojamiento activado, los hoteles de la zona en pantalla</td><td>gestionado por Apple según su política</td></tr>
 </tbody></table></div>
 <p>Cada servicio guarda sus propios registros según su política. La mayoría de estos datos se publica con licencias abiertas como CC BY 4.0; los créditos aparecen en la app.</p>
 <h3>7. Compras (Sisu)</h3>
 <p>Las suscripciones Sisu y los pases de 7 días los vende y procesa Apple en la App Store. La app nunca ve ni guarda datos de pago; solo pregunta a la App Store qué compras están activas en tu Cuenta de Apple. Las cancelaciones y los reembolsos siguen las reglas de Apple.</p>
 <h3>8. Enlaces externos</h3>
-<p>La app abre sitios externos: noticias, servicios oficiales (por ejemplo Migri, DVV, Kela, Vero, suomi.fi), sitios de aerolíneas y Google Vuelos, mapas, Instagram (@thefinlandlife) y estas páginas legales. Allí se aplican sus propias políticas y condiciones.</p>
+<p>La app abre sitios externos: noticias, servicios oficiales (por ejemplo Migri, DVV, Kela, Vero, suomi.fi), sitios de aerolíneas y Google Vuelos, portales inmobiliarios (Oikotie, Etuovi), mapas, Instagram (@thefinlandlife) y estas páginas legales. Allí se aplican sus propias políticas y condiciones.</p>
 <h3>9. Exportar y borrar tus datos</h3>
 <p>En Ajustes › Tus datos puedes exportar un archivo con todo lo que guarda la app y borrarlo todo con "Borrar datos locales" (ver la página <a href="../delete-data/">Borrar tus datos</a>). Desinstalar la app también lo borra. Por nuestra parte no hay nada que borrar, porque no tenemos ninguna copia.</p>
 <h3>10. Menores</h3>
@@ -230,8 +230,8 @@ ul.links a{display:block;padding:14px 16px;border:1px solid var(--line);border-r
 </section>
 <section class="lang" id="fr" lang="fr" aria-label="Français">
 <h2>Politique de confidentialité</h2>
-<p class="updated">En vigueur depuis le 22 octobre 2026</p>
-<p>En bref : Finland Life n’a ni compte ni connexion, et aucun serveur de Finland Life ne reçoit vos données. Ce que vous faites dans l’app reste sur votre appareil. Quand l’app utilise internet, elle interroge des services de données publiques (météo, trains, actualités, etc.) directement depuis votre appareil. Nous n’utilisons aucun outil d’analyse, de rapport de plantage ni de publicité, nous ne vous suivons pas et nous ne vendons pas de données.</p>
+<p class="updated">En vigueur depuis le 23 octobre 2026</p>
+<p>En bref : Finland Life n’a ni compte ni connexion, et aucun serveur de Finland Life ne conserve vos données. Ce que vous faites dans l’app reste sur votre appareil. Quand l’app utilise internet, elle interroge des services de données publiques (météo, trains, actualités, etc.) depuis votre appareil — directement ou, pour les itinéraires, via un petit relais de Finland Life qui ajoute seulement notre clé d’accès et ne garde rien. Nous n’utilisons aucun outil d’analyse, de rapport de plantage ni de publicité, nous ne vous suivons pas et nous ne vendons pas de données.</p>
 <h3>1. Qui sommes-nous</h3>
 <p>Finland Life est publiée par Rafael Melo. Contact pour la confidentialité : <a href="mailto:rmappflow@gmail.com">rmappflow@gmail.com</a>.</p>
 <h3>2. Ce qui reste uniquement sur votre appareil</h3>
@@ -243,11 +243,11 @@ ul.links a{display:block;padding:14px 16px;border:1px solid var(--line);border-r
 <li>La copie hors ligne du voyage que vous téléchargez (prévisions météo et d’aurores pour un lieu ; 2 Mo au maximum, supprimée automatiquement après le voyage).</li>
 <li>Des copies temporaires de données publiques téléchargées (prévisions, horaires, actualités, photos), gardées dans le cache de l’appareil.</li>
 </ul>
-<p>La synchronisation avec iCloud est actuellement désactivée : l’app ne copie pas vos données vers iCloud. La sauvegarde de l’appareil lui-même (iCloud ou ordinateur) peut inclure les fichiers de l’app, selon les règles d’Apple.</p>
+<p>La synchronisation avec iCloud est actuellement désactivée : l’app ne copie pas vos données vers iCloud. La sauvegarde de l’appareil lui-même (iCloud ou ordinateur) peut inclure les fichiers de l’app, selon les règles d’Apple (la copie hors ligne du voyage est exclue de la sauvegarde).</p>
 <h3>3. Localisation</h3>
 <ul>
 <li>L’app demande la localisation uniquement « lorsque l’app est active ». Elle ne vous suit jamais en arrière-plan.</li>
-<li>Elle sert à afficher la météo locale, les conditions d’aurores, la gare, la caméra routière et le marégraphe les plus proches, et à planifier des trajets en transports publics.</li>
+<li>Elle sert à afficher la météo locale, les conditions d’aurores, la gare, la caméra routière et le marégraphe les plus proches, et à planifier des trajets en transports publics. Dans l’onglet Carte, elle n’est utilisée qu’après avoir touché « Près de moi ».</li>
 <li>Pour l’alerte « Aurore au-dessus de vous » (si vous l’activez), iOS peut réveiller l’app de temps en temps. L’app utilise alors la dernière position déjà connue d’iOS, sans en demander une nouvelle, et calcule sur l’appareil la station magnétométrique la plus proche. Votre position n’est envoyée nulle part lors de cette vérification.</li>
 <li>Quand un service a besoin d’un lieu (prévisions météo, calcul d’itinéraire), l’app envoie les coordonnées de votre position ou du lieu choisi. Voir la section 6.</li>
 <li>Vous pouvez refuser ou retirer l’autorisation dans les Réglages de l’iPhone ; l’app continue de fonctionner avec la ville que vous choisissez.</li>
@@ -263,23 +263,23 @@ ul.links a{display:block;padding:14px 16px;border:1px solid var(--line);border-r
 <h3>6. Services interrogés par l’app</h3>
 <p>Comme tout site web, ces services reçoivent votre adresse IP et des données techniques de connexion. L’app ne leur envoie ni votre nom, ni votre e-mail, ni aucun identifiant d’appareil ou publicitaire.</p>
 <div class="table-wrap"><table><thead><tr><th>Service</th><th>Usage</th><th>Ce qu’il reçoit en plus de l’IP</th></tr></thead><tbody>
-<tr><td>Institut météorologique finlandais (FMI), données ouvertes</td><td>prévisions, observations, marégraphes, activité des aurores (magnétomètres)</td><td>pour les prévisions, les coordonnées de votre position ou du lieu choisi ; sinon rien</td></tr>
-<tr><td>Fintraffic Digitraffic</td><td>trains et gares en direct, météo routière, caméras routières</td><td>les gares consultées ; l’app s’identifie comme « FinlandLife/iOS »</td></tr>
-<tr><td>Digitransit (HSL, Fintraffic, Waltti)</td><td>itinéraires en transports urbains, arrêts et recherche d’adresses</td><td>départ et arrivée de l’itinéraire (coordonnées ou texte saisi)</td></tr>
-<tr><td>Finavia</td><td>départs et arrivées des aéroports</td><td>rien</td></tr>
-<tr><td>Ville d’Helsinki (Linked Events)</td><td>événements</td><td>rien</td></tr>
+<tr><td>Institut météorologique finlandais (FMI), données ouvertes</td><td>prévisions, observations, marégraphes, activité des aurores (magnétomètres), le radar pluie et neige sur la carte (avec cette couche activée)</td><td>pour les prévisions, les coordonnées de votre position ou du lieu choisi ; pour le radar, les tuiles de la carte à l’écran ; sinon rien</td></tr>
+<tr><td>HSL (transports de la région d’Helsinki), position des véhicules en direct</td><td>bus, trams, métro et ferries qui circulent sur la carte (seulement avec Transports en direct activé, en zoomant sur Helsinki)</td><td>la zone de la carte à l’écran (en carrés de 0,1°) et votre IP ; rien sur vous</td></tr>
+<tr><td>Fintraffic Digitraffic</td><td>trains et gares en direct, position des trains sur la carte (seulement avec cette couche activée), météo routière, caméras routières</td><td>les gares consultées (position des trains : rien sur vous) ; l’app s’identifie comme « FinlandLife/iOS » ou « FinlandLife/ » suivi de la version de l’app</td></tr>
+<tr><td>Relais Finland Life (Cloudflare Workers)</td><td>transmet à Digitransit les demandes d’itinéraire et de recherche d’adresse, en ajoutant notre clé d’accès</td><td>la même chose que Digitransit ci-dessous ; nous ne gardons ni journaux ni copies (Cloudflare traite la connexion selon sa propre politique)</td></tr>
+<tr><td>Digitransit (HSL, Fintraffic, Waltti), via le relais</td><td>itinéraires en transports urbains, arrêts et recherche d’adresses</td><td>départ et arrivée de l’itinéraire (coordonnées ou texte saisi) ; il voit le relais, pas votre IP</td></tr>
+<tr><td>Ville d’Helsinki (Linked Events)</td><td>événements ; la photo de chaque événement se charge depuis l’adresse publiée par l’organisateur</td><td>rien</td></tr>
 <tr><td>NOAA Space Weather Prediction Center</td><td>prévisions d’aurores</td><td>rien</td></tr>
-<tr><td>Yle</td><td>actualités</td><td>rien</td></tr>
 <tr><td>Wikimedia Commons</td><td>photos des lieux</td><td>rien</td></tr>
-<tr><td>Cloudflare (finlandlife-content.pages.dev)</td><td>contenu éditorial et images de l’app</td><td>rien</td></tr>
-<tr><td>YouTube (Google), youtube-nocookie.com</td><td>caméras en direct, seulement quand vous en ouvrez une</td><td>ce que reçoit un lecteur YouTube intégré ; <a href="https://policies.google.com/privacy">Règles de confidentialité de Google</a></td></tr>
-<tr><td>Apple (App Store)</td><td>achats et état de l’abonnement</td><td>traité par Apple selon sa propre politique</td></tr>
+<tr><td>Cloudflare (finlandlife-content.pages.dev)</td><td>articles, résumés d’actualité et images propres à Finland Life, quand ils sont publiés</td><td>rien</td></tr>
+<tr><td>YouTube (Google), youtube.com et youtube-nocookie.com</td><td>caméras en direct. Ouvrir la liste demande à YouTube si chaque flux est en ligne. Le lecteur ne se charge qu’après avoir touché une caméra, ne démarre jamais seul et ne garde ni cookies ni données de site après fermeture.</td><td>ce que reçoit un lecteur YouTube intégré ; l’app s’identifie avec son identifiant App Store ; <a href="https://policies.google.com/privacy">Règles de confidentialité de Google</a></td></tr>
+<tr><td>Apple</td><td>achats et état de l’abonnement (App Store) ; reconnaissance vocale dans les exercices quand elle ne peut pas se faire sur l’iPhone (section 4) ; nom du lieu de votre position ; cartes ; la recherche de la Carte (ce que vous tapez) et, avec Hébergement activé, les hôtels de la zone à l’écran</td><td>traité par Apple selon sa propre politique</td></tr>
 </tbody></table></div>
 <p>Chaque service conserve ses propres journaux selon sa politique. La plupart de ces données sont publiées sous licences ouvertes comme CC BY 4.0 ; les crédits figurent dans l’app.</p>
 <h3>7. Achats (Sisu)</h3>
 <p>Les abonnements Sisu et les pass de 7 jours sont vendus et traités par Apple via l’App Store. L’app ne voit ni ne conserve aucune donnée de paiement ; elle demande seulement à l’App Store quels achats sont actifs sur votre compte Apple. L’annulation et les remboursements suivent les règles d’Apple.</p>
 <h3>8. Liens externes</h3>
-<p>L’app ouvre des sites externes : articles d’actualité, services officiels (par exemple Migri, DVV, Kela, Vero, suomi.fi), sites de compagnies aériennes et Google Vols, plans, Instagram (@thefinlandlife) et ces pages juridiques. Leurs propres politiques et conditions s’y appliquent.</p>
+<p>L’app ouvre des sites externes : articles d’actualité, services officiels (par exemple Migri, DVV, Kela, Vero, suomi.fi), sites de compagnies aériennes et Google Vols, sites d’annonces immobilières (Oikotie, Etuovi), plans, Instagram (@thefinlandlife) et ces pages juridiques. Leurs propres politiques et conditions s’y appliquent.</p>
 <h3>9. Exporter et supprimer vos données</h3>
 <p>Dans Réglages › Vos données, vous pouvez exporter un fichier avec tout ce que l’app conserve et tout supprimer avec « Supprimer les données locales » (voir la page <a href="../delete-data/">Supprimer vos données</a>). Désinstaller l’app les supprime aussi. De notre côté, il n’y a rien à supprimer, car nous n’en avons aucune copie.</p>
 <h3>10. Enfants</h3>
